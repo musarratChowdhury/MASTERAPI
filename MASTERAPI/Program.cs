@@ -17,9 +17,13 @@ var server = Environment.GetEnvironmentVariable("DB_SERVER");
 var database = Environment.GetEnvironmentVariable("DB_NAME");
 var user = Environment.GetEnvironmentVariable("DB_USER");
 var password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbPassword = Environment.GetEnvironmentVariable("DB_SA_PASSWORD");
 //var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings:MDB");
 //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-var connectionString = $"Server={server};Database={database};;TrustServerCertificate={true};Trusted_Connection = True;MultipleActiveResultSets=True";
+//var connectionString = $"Server={server};Database={database};;TrustServerCertificate={true};Trusted_Connection = True;MultipleActiveResultSets=True";
+var connectionString = $"Data Source={dbHost}; Initial Catalog={dbName}; User ID=sa; Password={dbPassword};TrustServerCertificate=true;";
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));

@@ -29,5 +29,10 @@ namespace MASTERAPI.Services
                 return false;   
             }
         }
+
+        public  IList<Product> GetAllProducts()
+        {
+           return  _unitOfWork.Products.GetAll();
+        }
     }
 }

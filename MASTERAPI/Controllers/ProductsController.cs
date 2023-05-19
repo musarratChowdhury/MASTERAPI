@@ -15,9 +15,12 @@ namespace MASTERAPI.Controllers
             _productService = productService;
         }
         [HttpGet]
-        public string GetProducts()
+        public  IActionResult GetProducts()
         {
-            return "Ok";
+           
+                var result =  _productService.GetAllProducts();
+            return Ok(result.ToList());
+            
         }
 
         [HttpPost]
